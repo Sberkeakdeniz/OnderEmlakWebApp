@@ -269,8 +269,9 @@ const ChartLegend = RechartsPrimitive.Legend;
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'> &
-    Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
+  React.ComponentProps<'div'> & {
+      payload?: ChartPayloadItem[];
+      verticalAlign?: 'top' | 'bottom' | 'middle';
       hideIcon?: boolean;
       nameKey?: string;
     }
