@@ -102,20 +102,23 @@ ${colorConfig
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ChartPayloadItem = Record<string, any>;
+
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<'div'> & {
       active?: boolean;
-      payload?: Array<Record<string, unknown>>;
+      payload?: ChartPayloadItem[];
       hideLabel?: boolean;
       hideIndicator?: boolean;
       indicator?: 'line' | 'dot' | 'dashed';
       nameKey?: string;
       labelKey?: string;
       label?: string;
-      labelFormatter?: (label: string, payload: Array<Record<string, unknown>>) => React.ReactNode;
+      labelFormatter?: (label: React.ReactNode, payload: ChartPayloadItem[]) => React.ReactNode;
       labelClassName?: string;
-      formatter?: (value: unknown, name: string, item: Record<string, unknown>, index: number, payload: Array<Record<string, unknown>>) => React.ReactNode;
+      formatter?: (value: unknown, name: string, item: ChartPayloadItem, index: number, payload: ChartPayloadItem[]) => React.ReactNode;
       color?: string;
     }
 >(
@@ -194,7 +197,7 @@ const ChartTooltipContent = React.forwardRef<
           {payload.map((item, index) => {
             const key = `${nameKey || item.name || item.dataKey || 'value'}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
-            const indicatorColor = color || item.payload.fill || item.color;
+            const indicatorColor = color || item.payload?.fill || item.color;
 
             return (
               <div
