@@ -1,0 +1,219 @@
+# Cursorrules File for Real Estate Agency Website
+
+## **Purpose**
+This cursorrules file defines detailed coding standards, conventions, and best practices for the Real Estate Agency Website project. It ensures consistency, readability, and maintainability of the codebase. Adherence to these rules enables efficient collaboration among team members and AI-assisted code generation tools.
+
+---
+
+## **1. General Guidelines**
+- Use **English** for all code comments, variable names, and function names.
+- Always read guidelines.md and technical-requirements.md files before every action.
+- Follow the **DRY Principle** (Don't Repeat Yourself) to avoid redundant code.
+- Prioritize **readability** and **maintainability** in all parts of the codebase.
+- Ensure code is properly **documented** using meaningful comments, explaining why certain decisions were made.
+- Enforce **version control** best practices:
+  - Use Git for tracking changes.
+  - Commit frequently with descriptive messages.
+
+---
+
+## **2. Naming Conventions**
+
+### **Variables**
+- Use **camelCase** for variable and function names.
+  ```javascript
+  const propertyList = [];
+  const getPropertyDetails = (id) => {};
+  ```
+- Prefix boolean variables with `is`, `has`, or `can` to improve clarity.
+  ```javascript
+  const isPropertyAvailable = true;
+  const hasUserLoggedIn = false;
+  ```
+
+### **Constants**
+- Use **UPPERCASE_SNAKE_CASE** for constants to distinguish them from other variables.
+  ```javascript
+  const API_BASE_URL = "https://api.example.com";
+  const JWT_EXPIRATION = "2h";
+  ```
+
+### **Files and Folders**
+- Use **kebab-case** for file and folder names to maintain consistency.
+  ```
+  /components/property-card.js
+  /controllers/property-controller.js
+  /styles/global.css
+  ```
+
+### **Classes**
+- Use **PascalCase** for class names.
+  ```javascript
+  class PropertyService {
+    constructor() {}
+  }
+  ```
+
+### **Database Fields**
+- Use **snake_case** for database field names.
+  ```json
+  {
+    "property_name": "Beautiful Apartment",
+    "owner_id": "abc123"
+  }
+  ```
+
+---
+
+## **3. Code Structure**
+
+### **Frontend**
+- Organize components into the `components` directory with subdirectories based on functionality.
+  ```
+  /components
+    /shared
+    /property
+  ```
+- Separate reusable utility functions into a `utils` folder.
+- Maintain page-specific logic in the `pages` directory.
+
+### **Backend**
+- Follow the **MVC Pattern**:
+  - `models`: For database schemas.
+  - `controllers`: For business logic.
+  - `routes`: For API endpoint definitions.
+- Use a `services` layer for reusable server-side logic (e.g., external API calls, data transformation).
+
+---
+
+## **4. Styling Rules**
+
+### **CSS (Tailwind CSS)**
+- Use Tailwind utility classes for most styling needs to ensure consistency and reusability.
+- Avoid inline styles unless dynamically computed.
+- Define global styles in `globals.css` for application-wide theming.
+- Group utility classes by function and purpose for readability:
+  ```html
+  <div class="bg-gray-100 p-4 rounded shadow-lg">
+    <h1 class="text-2xl font-bold text-blue-500">Property Name</h1>
+  </div>
+  ```
+
+---
+
+## **5. Code Formatting**
+
+### **Formatting Tools**
+- Use **Prettier** for consistent code formatting.
+- Enforce ESLint rules for coding standards and best practices.
+
+### **Indentation and Line Length**
+- Indentation: 2 spaces.
+- Line length: Maximum 80 characters for readability.
+
+### **Semicolons and Braces**
+- Use semicolons consistently to terminate statements.
+- Always use braces `{}` for conditional blocks, even for one-line statements:
+  ```javascript
+  if (isPropertyAvailable) {
+    console.log("Property is available.");
+  }
+  ```
+
+---
+
+## **6. Commit Messages**
+
+### **Format**
+Use the **conventional commit** format:
+```plaintext
+<type>(<scope>): <description>
+```
+Example:
+```plaintext
+feat(search): add location-based search filters
+fix(auth): resolve token expiration handling
+```
+
+### **Types**
+- **feat**: Introducing a new feature.
+- **fix**: Fixing a bug or issue.
+- **docs**: Documentation changes.
+- **style**: Formatting or style improvements.
+- **refactor**: Code refactoring without changing behavior.
+- **test**: Adding or updating tests.
+
+---
+
+## **7. Testing Standards**
+
+### **Unit Tests**
+- Use **Jest** for frontend and backend unit testing.
+- Write test cases for critical components and functions.
+
+### **Integration Tests**
+- Use **Supertest** to test API endpoints.
+
+### **End-to-End Tests**
+- Use **Cypress** to test complete user workflows.
+- Scenarios to cover:
+  - User login and dashboard navigation.
+  - Property searches and view details.
+
+---
+
+## **8. Environment Configuration**
+- Store sensitive data in `.env` files.
+- Use descriptive variable names:
+  ```plaintext
+  MONGO_URI=mongodb://...
+  JWT_SECRET=your-secret-key
+  CLOUDINARY_API_KEY=your-api-key
+  ```
+- Add `.env` files to `.gitignore` to prevent accidental commits.
+
+---
+
+## **9. Deployment Guidelines**
+
+### **Frontend**
+- Minify assets for production builds.
+- Use a CDN for static assets to improve performance.
+
+### **Backend**
+- Configure environment-specific settings.
+- Ensure database connections use SSL in production.
+
+### **Continuous Integration**
+- Set up **GitHub Actions** for CI/CD pipelines to:
+  - Run tests automatically.
+  - Deploy code to production/staging environments.
+
+---
+
+## **10. Documentation Standards**
+
+### **Code Documentation**
+- Use **JSDoc** for documenting functions and APIs.
+- Provide detailed descriptions for parameters, return types, and exceptions:
+  ```javascript
+  /**
+   * Retrieves a property by ID.
+   * @param {string} id - The unique identifier of the property.
+   * @returns {Object} - The property details.
+   */
+  const getPropertyById = (id) => {
+    // Implementation
+  };
+  ```
+
+### **Project Documentation**
+- Maintain a `README.md` with:
+  - Project overview.
+  - Setup instructions.
+  - Development guidelines.
+- Update the `CHANGELOG.md` for every release.
+
+---
+
+This cursorrules file defines detailed and clear standards for developers and AI-assisted tools, ensuring the Real Estate Agency Website project maintains high-quality, consistent, and scalable code.
